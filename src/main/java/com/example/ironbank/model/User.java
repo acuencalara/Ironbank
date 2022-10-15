@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
-@AllArgsConstructor
+
 public abstract  class  User {
 
     @Id
@@ -18,4 +18,12 @@ public abstract  class  User {
 
     private String name;
 
+    public User(Long userId, String name) {
+        this.userId = userId;
+        this.name = name;
+    }
+
+    public User() {
+
+    }
 }
