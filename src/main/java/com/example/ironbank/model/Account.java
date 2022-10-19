@@ -2,7 +2,6 @@ package com.example.ironbank.model;
 
 
 import com.example.ironbank.Enum.StatusEnum;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,15 +15,21 @@ import java.time.LocalDate;
 @Setter
 @Getter
 @Data
-public abstract class Account extends BasicAccount{
+@Entity
+public abstract class Account extends BasicAccount {
 
-    private String secretkey;
+    private String secretKey;
 
     @Enumerated(value = EnumType.STRING)
-    @Column(name="status")
+    @Column(name = "status")
     private StatusEnum statusEnum;
 
-    public Account(){
+    public Account() {
+    }
 
+    public Account(LocalDate creationDate, String secretKey, StatusEnum statusEnum) {
+        super(creationDate);
+        this.secretKey = secretKey;
+        this.statusEnum = statusEnum;
     }
 }

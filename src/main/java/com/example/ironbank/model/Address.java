@@ -26,11 +26,11 @@ public class Address {
     private String country;
 
     @OneToMany
-    @JoinColumn (name="accountholder_primary_address_id")
+    @JoinColumn (name="primary_address")
     List<AccountHolder> accountHolderListPrimaryAddress=new ArrayList<>();
 
     @OneToMany
-    @JoinColumn (name="accountholder_mailing_address_id")
+    @JoinColumn (name="mailing_address")
     List<AccountHolder> accountHolderListMailingAddress=new ArrayList<>();
 
     public Address() {

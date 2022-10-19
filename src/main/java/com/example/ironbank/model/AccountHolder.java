@@ -1,9 +1,6 @@
 package com.example.ironbank.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -12,8 +9,8 @@ import java.time.LocalDate;
 @Getter
 @Setter
 @Entity
-@AllArgsConstructor
 @ToString
+@Data
 public class AccountHolder extends User {
 
 
@@ -30,6 +27,18 @@ public class AccountHolder extends User {
 
 
     public AccountHolder() {
-        super();
+    }
+
+    public AccountHolder(LocalDate dateOfBirth, Address primaryAddress, Address mailingAddress) {
+        this.dateOfBirth = dateOfBirth;
+        this.primaryAddress = primaryAddress;
+        this.mailingAddress = mailingAddress;
+    }
+
+    public AccountHolder(String name, LocalDate dateOfBirth, Address primaryAddress, Address mailingAddress) {
+        super(name);
+        this.dateOfBirth = dateOfBirth;
+        this.primaryAddress = primaryAddress;
+        this.mailingAddress = mailingAddress;
     }
 }

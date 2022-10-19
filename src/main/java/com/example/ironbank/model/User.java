@@ -1,27 +1,25 @@
 package com.example.ironbank.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Setter
 public abstract  class  User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long userId;
+    protected Long userId;
 
-    private String name;
+    protected String name;
 
-    public User(Long userId, String name) {
-        this.userId = userId;
-        this.name = name;
-    }
 
     public User() {
+    }
 
+    public User(String name) {
+        this.name = name;
     }
 }

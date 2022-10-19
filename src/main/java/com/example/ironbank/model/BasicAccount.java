@@ -22,7 +22,10 @@ public abstract class BasicAccount {
     private LocalDate creationDate;
 
     public BasicAccount() {
+    }
 
+    public BasicAccount(LocalDate creationDate) {
+        this.creationDate = creationDate;
     }
 
     public Long getId() {
@@ -33,8 +36,4 @@ public abstract class BasicAccount {
         this.id = id;
     }
 
-    public BasicAccount(Long id, LocalDate creationDate) {
-        this.id = id;
-        this.creationDate = creationDate;
-    }
 }
