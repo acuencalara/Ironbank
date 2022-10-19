@@ -16,6 +16,7 @@ import java.time.LocalDate;
 @ToString
 public class AccountHolder extends User {
 
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
 
