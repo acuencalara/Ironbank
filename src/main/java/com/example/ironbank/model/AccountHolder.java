@@ -1,5 +1,6 @@
 package com.example.ironbank.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -10,19 +11,19 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @ToString
-@Data
 public class AccountHolder extends User {
-
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfBirth;
 
     @ManyToOne
     @JoinColumn(name ="primary_address")
+    @JsonManagedReference
     private Address primaryAddress;
 
     @ManyToOne
     @JoinColumn(name ="mailing_address")
+    @JsonManagedReference
     private Address mailingAddress;
 
 

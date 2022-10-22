@@ -13,13 +13,14 @@ import java.time.LocalDate;
 @Data
 @Getter
 @Setter
+@Inheritance(strategy=InheritanceType.JOINED)
 public abstract class BasicAccount {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Long id;
+    protected Long id;
 
-    private LocalDate creationDate;
+    protected LocalDate creationDate;
 
     public BasicAccount() {
     }

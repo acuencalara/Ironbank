@@ -34,6 +34,14 @@ public class Address {
     List<AccountHolder> accountHolderListMailingAddress=new ArrayList<>();
 
     public Address() {
+    }
 
+    public Address(String street, Integer streetNumber, Integer flatNumber, String zipCode, String city, String country) {
+        this.street = street;
+        this.streetNumber = streetNumber;
+        this.flatNumber = flatNumber;
+        this.zipCode = zipCode;
+        this.city = city;
+        this.country = country;
     }
 }

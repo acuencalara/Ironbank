@@ -6,19 +6,17 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Setter
 @Getter
 @Data
 @Entity
+
 public abstract class Account extends BasicAccount {
 
-    private String secretKey;
+    protected String secretKey;
 
     @Enumerated(value = EnumType.STRING)
     @Column(name = "status")
