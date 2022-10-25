@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -21,6 +23,12 @@ public abstract class BasicAccount {
     protected Long id;
 
     protected LocalDate creationDate;
+
+    @OneToMany(mappedBy = "sendAccount", orphanRemoval = true)
+    private List<MoneyTransfer> moneyTransfersSend = new ArrayList<>();
+
+    @OneToMany(mappedBy = "receiveAccount", orphanRemoval = true)
+    private List<MoneyTransfer> moneyTransfersReceive = new ArrayList<>();
 
     public BasicAccount() {
     }
