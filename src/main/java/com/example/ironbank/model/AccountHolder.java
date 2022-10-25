@@ -23,6 +23,7 @@ public class AccountHolder extends User {
 
     @ManyToOne
     @JoinColumn(name ="mailing_address")
+    @JsonManagedReference
     private Address mailingAddress;
 
 

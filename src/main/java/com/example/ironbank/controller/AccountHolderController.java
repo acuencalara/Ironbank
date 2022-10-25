@@ -16,17 +16,18 @@ public class AccountHolderController {
 
     @Autowired
     private AccountHolderService accountHolderService;
-    @Autowired
-    private AccountHolderRepository accountHolderRepository;
+
+
 
     @GetMapping("/accountholder/")
-    public List<AccountHolder> findAll() {
+    @ResponseStatus(HttpStatus.OK)
+    public List<AccountHolder> findAll(){
         return accountHolderService.findAll();
     }
 
     @PostMapping("/accountholder/")
     @ResponseStatus(HttpStatus.CREATED)
-    public AccountHolder addAccountHolder(@RequestBody AccountHolder accountHolder) {
+    public AccountHolder addAccountHolder(@RequestBody AccountHolder accountHolder){
         return accountHolderService.addAccountHolder(accountHolder);
     }
 }
