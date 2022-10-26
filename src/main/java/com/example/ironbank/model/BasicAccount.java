@@ -30,6 +30,14 @@ public abstract class BasicAccount {
     @OneToMany(mappedBy = "receiveAccount", orphanRemoval = true)
     private List<MoneyTransfer> moneyTransfersReceive = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "primary_owner_user_id")
+    private AccountHolder primaryOwner;
+
+    @ManyToOne
+    @JoinColumn(name = "secondary_owner_user_id")
+    private AccountHolder secondaryOwner;
+
     public BasicAccount() {
     }
 

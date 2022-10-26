@@ -5,6 +5,8 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -23,6 +25,12 @@ public class AccountHolder extends User {
     @JoinColumn(name ="mailing_address")
     private Address mailingAddress;
 
+
+    @OneToMany(mappedBy = "primaryOwner", orphanRemoval = true)
+    private List<BasicAccount> basicAccountsPrimaryOwner = new ArrayList<>();
+
+    @OneToMany(mappedBy = "secondaryOwner", orphanRemoval = true)
+    private List<BasicAccount> basicAccountsSecondaryOwner = new ArrayList<>();
 
     public AccountHolder() {
     }
