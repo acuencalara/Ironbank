@@ -18,11 +18,9 @@ public class AccountHolder extends User {
     private LocalDate dateOfBirth;
 
     @ManyToOne
-    @JoinColumn(name ="primary_address")
     private Address primaryAddress;
 
     @ManyToOne
-    @JoinColumn(name ="mailing_address")
     private Address mailingAddress;
 
 

@@ -25,12 +25,10 @@ public class Address {
     private String city;
     private String country;
 
-    @OneToMany
-    @JoinColumn (name="primary_address")
+    @OneToMany (mappedBy = "primaryAddress")
     List<AccountHolder> accountHolderListPrimaryAddress=new ArrayList<>();
 
-    @OneToMany
-    @JoinColumn (name="mailing_address")
+    @OneToMany (mappedBy = "mailingAddress")
     List<AccountHolder> accountHolderListMailingAddress=new ArrayList<>();
 
     public Address() {

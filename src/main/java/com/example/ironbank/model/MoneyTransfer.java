@@ -22,15 +22,12 @@ public class MoneyTransfer {
     private LocalDateTime timeStamp;
 
     @ManyToOne
-    @JoinColumn(name = "user_user_id")
     private User user;
 
     @ManyToOne
-    @JoinColumn(name = "send_account_id")
     private BasicAccount sendAccount;
 
     @ManyToOne
-    @JoinColumn(name = "receive_account_id")
     private BasicAccount receiveAccount;
 
     @Embedded
