@@ -1,5 +1,6 @@
 package com.example.ironbank.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -25,12 +26,14 @@ public class AccountHolder extends User {
 
 
     @OneToMany(mappedBy = "primaryOwner", orphanRemoval = true)
+    @JsonIgnore
     private List<BasicAccount> basicAccountsPrimaryOwner = new ArrayList<>();
 
     @OneToMany(mappedBy = "secondaryOwner", orphanRemoval = true)
+    @JsonIgnore
     private List<BasicAccount> basicAccountsSecondaryOwner = new ArrayList<>();
 
-    public AccountHolder() {
+    public AccountHolder(String name, LocalDate dateOfBirth) {
     }
 
     public AccountHolder(LocalDate dateOfBirth, Address primaryAddress, Address mailingAddress) {
@@ -44,5 +47,9 @@ public class AccountHolder extends User {
         this.dateOfBirth = dateOfBirth;
         this.primaryAddress = primaryAddress;
         this.mailingAddress = mailingAddress;
+    }
+
+    public AccountHolder() {
+
     }
 }

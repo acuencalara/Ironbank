@@ -26,6 +26,10 @@ public class InitMasterData {
 
     public void initData(){
 
+        accountHolderRepository.deleteAll();
+        addressRepository.deleteAll();
+
+
         Address addressUser1 = new Address("Plza España",2,2, "25842", "Barcelona", "Spain");
         Address addressUser2 = new Address("Girona",2,2, "25842", "Malgrat de Mar", "Spain");
         Address addressUser3 = new Address("Manuel de Falla",2,2, "25842", "Badalona", "Spain");

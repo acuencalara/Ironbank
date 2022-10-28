@@ -15,10 +15,13 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AccountHolderController {
 
+
     @Autowired
+
     private AccountHolderService accountHolderService;
 
     @Autowired
+
     private InitMasterData initMasterData;
 
     @GetMapping("/initData/")
@@ -32,9 +35,6 @@ public class AccountHolderController {
         return accountHolderService.findAll();
     }
 
-    @PostMapping("/accountholder/")
-    @ResponseStatus(HttpStatus.CREATED)
-    public AccountHolder addAccountHolder(@RequestBody AccountHolder accountHolder){
-        return accountHolderService.addAccountHolder(accountHolder);
-    }
+
+
 }

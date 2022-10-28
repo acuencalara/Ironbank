@@ -1,5 +1,6 @@
 package com.example.ironbank.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -25,11 +26,13 @@ public class Address {
     private String city;
     private String country;
 
-    @OneToMany (mappedBy = "primaryAddress")
-    List<AccountHolder> accountHolderListPrimaryAddress=new ArrayList<>();
+    @OneToMany(mappedBy = "primaryAddress")
+    @JsonIgnore
+    private List<AccountHolder> accountHolderListPrimaryAddress = new ArrayList<>();
 
-    @OneToMany (mappedBy = "mailingAddress")
-    List<AccountHolder> accountHolderListMailingAddress=new ArrayList<>();
+    @OneToMany(mappedBy = "mailingAddress")
+    @JsonIgnore
+    private List<AccountHolder> accountHolderListMailingAddress = new ArrayList<>();
 
     public Address() {
     }

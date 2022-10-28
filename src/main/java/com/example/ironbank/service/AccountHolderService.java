@@ -15,15 +15,12 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AccountHolderService {
+
     @Autowired
     private AccountHolderRepository accountHolderRepository;
 
     public List<AccountHolder> findAll() {
         return accountHolderRepository.findAll();
-    }
-
-    public AccountHolder addAccountHolder(AccountHolder accountHolder) {
-        return accountHolderRepository.save(accountHolder);
     }
 
 }
