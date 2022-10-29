@@ -29,7 +29,7 @@ public class AccountHolderController {
         this.initMasterData.initData();
     }
 
-    @GetMapping("/accountholder/")
+    @GetMapping("/accountholders/")
     @ResponseStatus(HttpStatus.OK)
     public List<AccountHolder> findAll(){
         return accountHolderService.findAll();
