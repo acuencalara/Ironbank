@@ -4,6 +4,7 @@ import com.example.ironbank.model.AccountHolder;
 import com.sun.istack.NotNull;
 import lombok.*;
 
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -17,22 +18,22 @@ import java.time.LocalDate;
 @AllArgsConstructor
 public class AccountHolderDto implements Serializable {
 
-    @NotEmpty
+    @NotBlank
     private final String name;
-    @NotEmpty
+    @NotBlank
     private final LocalDate dateOfBirth;
 
-    @NotEmpty
+    @NotBlank
     private final String primaryAddressStreet;
-    @NotEmpty
+    @NotBlank
     private final Integer primaryAddressStreetNumber;
-    @NotEmpty
+    @NotBlank
     private final Integer primaryAddressFlatNumber;
-    @NotEmpty
+    @NotBlank
     private final String primaryAddressZipCode;
-    @NotEmpty
+    @NotBlank
     private final String primaryAddressCity;
-    @NotEmpty
+    @NotBlank
     private final String primaryAddressCountry;
 
     private final String mailingAddressStreet;
@@ -41,6 +42,5 @@ public class AccountHolderDto implements Serializable {
     private final String mailingAddressZipCode;
     private final String mailingAddressCity;
     private final String mailingAddressCountry;
-
 
 }

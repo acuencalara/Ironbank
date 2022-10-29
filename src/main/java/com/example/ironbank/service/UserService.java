@@ -1,7 +1,7 @@
 package com.example.ironbank.service;
 
-import com.example.ironbank.model.AccountHolder;
 import com.example.ironbank.DTO.AccountHolderDto;
+import com.example.ironbank.model.AccountHolder;
 import com.example.ironbank.model.Address;
 import com.example.ironbank.repository.AccountHolderRepository;
 import com.example.ironbank.repository.UserRepository;
@@ -22,9 +22,9 @@ public class UserService {
 
     public AccountHolder postAccountHolder(AccountHolderDto accountHolderDto) {
 
-        AccountHolder accountHolder = new AccountHolder(accountHolderDto.getName(),
-                accountHolderDto.getDateOfBirth());
-        accountHolderRepository.save(accountHolder);
+        AccountHolder accountHolder = new AccountHolder();
+        accountHolder.setName(accountHolderDto.getName());
+        accountHolder.setDateOfBirth(accountHolderDto.getDateOfBirth());
 
         Address primaryAddress = new Address(accountHolderDto.getPrimaryAddressStreet(),
                 accountHolderDto.getPrimaryAddressStreetNumber(),
@@ -35,11 +35,10 @@ public class UserService {
         addressService.createAddress(primaryAddress);
         accountHolder.setPrimaryAddress(primaryAddress);
 
-        if (!accountHolderDto.getMailingAddressCity().isEmpty() &&
-                !accountHolderDto.getMailingAddressStreet().isEmpty() &&
-                !accountHolderDto.getMailingAddressZipCode().isEmpty()&&
-        !accountHolderDto.getMailingAddressCountry().isEmpty())
-        {
+        if ((accountHolderDto.getMailingAddressCity()!=null&&!accountHolderDto.getMailingAddressCity().isBlank()) &&
+                (accountHolderDto.getMailingAddressStreet()!=null&&!accountHolderDto.getMailingAddressStreet().isBlank()) &&
+                (accountHolderDto.getMailingAddressZipCode()!=null&&!accountHolderDto.getMailingAddressZipCode().isBlank()) &&
+                (accountHolderDto.getMailingAddressCountry()!=null&&!accountHolderDto.getMailingAddressCountry().isBlank())) {
             Address mailingAddress = new Address(accountHolderDto.getMailingAddressStreet(),
                     accountHolderDto.getMailingAddressStreetNumber(),
                     accountHolderDto.getMailingAddressFlatNumber(),
@@ -49,8 +48,6 @@ public class UserService {
             addressService.createAddress(mailingAddress);
             accountHolder.setMailingAddress(mailingAddress);
         }
-
-        return accountHolder;
-
+        return accountHolderRepository.save(accountHolder);
     }
 }

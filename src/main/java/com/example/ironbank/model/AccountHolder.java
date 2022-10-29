@@ -13,6 +13,7 @@ import java.util.List;
 @Setter
 @Entity
 @ToString
+@AllArgsConstructor
 public class AccountHolder extends User {
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
