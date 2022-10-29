@@ -4,6 +4,7 @@ import com.example.ironbank.model.AccountHolder;
 import com.example.ironbank.model.Address;
 import com.example.ironbank.repository.AccountHolderRepository;
 import com.example.ironbank.repository.AddressRepository;
+import com.example.ironbank.repository.AdminUserRepository;
 import com.example.ironbank.repository.UserRepository;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,8 @@ public class InitMasterData {
     private AddressRepository addressRepository;
 
     private UserRepository userRepository;
+
+
 
     public InitMasterData(AccountHolderRepository accountHolderRepository, AddressRepository addressRepository, UserRepository userRepository) {
         this.accountHolderRepository = accountHolderRepository;
@@ -46,5 +49,7 @@ public class InitMasterData {
         accountHolderRepository.save(user1);
         accountHolderRepository.save(user2);
         accountHolderRepository.save(user3);
+
+
     }
 }

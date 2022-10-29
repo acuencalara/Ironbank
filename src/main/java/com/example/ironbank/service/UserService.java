@@ -3,7 +3,9 @@ package com.example.ironbank.service;
 import com.example.ironbank.DTO.AccountHolderDto;
 import com.example.ironbank.model.AccountHolder;
 import com.example.ironbank.model.Address;
+import com.example.ironbank.model.AdminUser;
 import com.example.ironbank.repository.AccountHolderRepository;
+import com.example.ironbank.repository.AdminUserRepository;
 import com.example.ironbank.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -12,12 +14,11 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserService {
 
-
     private final UserRepository userRepository;
-
     private final AccountHolderRepository accountHolderRepository;
-
     private final AddressService addressService;
+
+    private final AdminUserRepository adminUserRepository;
 
 
     public AccountHolder postAccountHolder(AccountHolderDto accountHolderDto) {
@@ -49,5 +50,14 @@ public class UserService {
             accountHolder.setMailingAddress(mailingAddress);
         }
         return accountHolderRepository.save(accountHolder);
+    }
+
+    public AdminUser postAdminUser(AdminUser adminUser){
+        AdminUser adminUser1=new AdminUser();
+        if(!adminUser.getName().isBlank()&&adminUser.getName()!=null){
+            adminUser1.setName(adminUser.getName());
+            adminUserRepository.save(adminUser1);
+        }
+        return adminUser1;
     }
 }
