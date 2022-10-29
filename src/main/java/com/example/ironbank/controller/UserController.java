@@ -3,6 +3,7 @@ package com.example.ironbank.controller;
 import com.example.ironbank.model.AccountHolder;
 import com.example.ironbank.DTO.AccountHolderDto;
 import com.example.ironbank.model.AdminUser;
+import com.example.ironbank.model.ThirdPartyUser;
 import com.example.ironbank.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,10 +28,16 @@ public class UserController {
         return userService.postAccountHolder(accountHolder);
     }
 
-    @PostMapping("/adminuser/")
+    @PostMapping("/adminusers/")
     @ResponseStatus(HttpStatus.CREATED)
     public AdminUser postAdminUser(@RequestBody AdminUser adminUser){
         return userService.postAdminUser(adminUser);
+    }
+
+    @PostMapping("/thirdpartyusers/")
+    @ResponseStatus(HttpStatus.CREATED)
+    public ThirdPartyUser postThirdPartyUser(@RequestBody ThirdPartyUser thirdPartyUser){
+        return userService.postThirdPartyUser(thirdPartyUser);
     }
 
 

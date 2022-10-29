@@ -4,12 +4,15 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.NotBlank;
 
 @Getter
 @Setter
 @Entity
 public class ThirdPartyUser extends User{
 
+    @NotBlank
     private String hashKey;
 
     public ThirdPartyUser(String name, String hashKey) {
