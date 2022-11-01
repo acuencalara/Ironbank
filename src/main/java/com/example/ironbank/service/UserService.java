@@ -80,4 +80,10 @@ public class UserService {
         }
         return thirdPartyUser1;
     }
+
+    public void saveAccountHolder(AccountHolder accountHolder){
+        accountHolderRepository.save(accountHolder);
+    }
+
 }
+

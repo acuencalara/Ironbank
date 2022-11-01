@@ -15,9 +15,7 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class AccountHolderService {
-
-    @Autowired
-    private AccountHolderRepository accountHolderRepository;
+    private final AccountHolderRepository accountHolderRepository;
 
     public List<AccountHolder> findAll() {
         return accountHolderRepository.findAll();

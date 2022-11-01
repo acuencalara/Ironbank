@@ -1,36 +1,30 @@
 package com.example.ironbank.service;
 
+import com.example.ironbank.Enum.StatusEnum;
 import com.example.ironbank.model.AccountHolder;
 import com.example.ironbank.model.Address;
-import com.example.ironbank.repository.AccountHolderRepository;
-import com.example.ironbank.repository.AddressRepository;
-import com.example.ironbank.repository.AdminUserRepository;
-import com.example.ironbank.repository.UserRepository;
+import com.example.ironbank.model.StudentCheckingAccount;
+import com.example.ironbank.repository.*;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 
 @Service
+@RequiredArgsConstructor
 public class InitMasterData {
 
-    private AccountHolderRepository accountHolderRepository;
+    private final AccountHolderRepository accountHolderRepository;
+    private final AddressRepository addressRepository;
 
-    private AddressRepository addressRepository;
-
-    private UserRepository userRepository;
-
-
-
-    public InitMasterData(AccountHolderRepository accountHolderRepository, AddressRepository addressRepository, UserRepository userRepository) {
-        this.accountHolderRepository = accountHolderRepository;
-        this.addressRepository = addressRepository;
-        this.userRepository = userRepository;
-    }
+    private final UserRepository userRepository;
+    private final StudentCheckingAccountRepository studentCheckingAccountRepository;
 
     public void initData(){
 
         accountHolderRepository.deleteAll();
         addressRepository.deleteAll();
+        studentCheckingAccountRepository.deleteAll();
 
 
         Address addressUser1 = new Address("Plza España",2,2, "25842", "Barcelona", "Spain");
@@ -50,6 +44,8 @@ public class InitMasterData {
         accountHolderRepository.save(user2);
         accountHolderRepository.save(user3);
 
+        StudentCheckingAccount studentCheckingAccount1 = new StudentCheckingAccount( LocalDate.of(1999,12,11),user1,user2,"IwonApollo");
+        studentCheckingAccountRepository.save(studentCheckingAccount1);
 
     }
 }

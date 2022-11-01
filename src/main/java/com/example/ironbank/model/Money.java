@@ -1,5 +1,7 @@
 package com.example.ironbank.model;
 
+import lombok.Setter;
+
 import javax.persistence.Embeddable;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -7,12 +9,13 @@ import java.util.Currency;
 
 
 @Embeddable
+@Setter
 public class Money {
 
     private static final Currency USD = Currency.getInstance("USD");
     private static final RoundingMode DEFAULT_ROUNDING = RoundingMode.HALF_EVEN;
 
-    private final Currency currency;
+    private Currency currency;
     private BigDecimal amount;
 
     /**
@@ -27,8 +30,8 @@ public class Money {
     /**
      * Class constructor specifying amount, and currency. Uses default RoundingMode HALF_EVEN.
      **/
-    public Money(BigDecimal amount, Currency currency, Currency currency1) {
-        this(amount, currency, DEFAULT_ROUNDING);
+    public Money(BigDecimal amount) {
+        this(amount, USD, DEFAULT_ROUNDING);
     }
 
     /**
@@ -38,9 +41,14 @@ public class Money {
         this(amount, USD, DEFAULT_ROUNDING);
     }
 
+
     public Money(Currency currency) {
 
         this.currency = currency;
+    }
+
+    public Money() {
+
     }
 
     public BigDecimal increaseAmount(Money money) {

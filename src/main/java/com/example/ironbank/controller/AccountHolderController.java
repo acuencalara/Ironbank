@@ -15,14 +15,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AccountHolderController {
 
-
-    @Autowired
-
-    private AccountHolderService accountHolderService;
-
-    @Autowired
-
-    private InitMasterData initMasterData;
+    private final AccountHolderService accountHolderService;
+    private final InitMasterData initMasterData;
 
     @GetMapping("/initData/")
     public void initData(){

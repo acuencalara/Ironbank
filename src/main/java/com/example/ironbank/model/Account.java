@@ -8,6 +8,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 
 @Setter
 @Getter
@@ -25,9 +26,18 @@ public abstract class Account extends BasicAccount {
     public Account() {
     }
 
+    public Account(Money balance, Money penaltyFee, LocalDate creationDate, List<MoneyTransfer> moneyTransfersSend, List<MoneyTransfer> moneyTransfersReceive, AccountHolder primaryOwner, AccountHolder secondaryOwner, String secretKey, StatusEnum statusEnum) {
+        super(balance, penaltyFee, creationDate, moneyTransfersSend, moneyTransfersReceive, primaryOwner, secondaryOwner);
+        this.secretKey = secretKey;
+        this.statusEnum = statusEnum;
+    }
+
     public Account(LocalDate creationDate, String secretKey, StatusEnum statusEnum) {
         super(creationDate);
         this.secretKey = secretKey;
         this.statusEnum = statusEnum;
+    }
+
+    public Account(LocalDate creationDate, AccountHolder primaryOwner, AccountHolder secondaryOwner, String secretKey) {
     }
 }
