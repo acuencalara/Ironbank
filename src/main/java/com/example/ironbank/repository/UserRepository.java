@@ -9,5 +9,9 @@ import java.util.List;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
+    @Query("select u from User u where u.userId = ?1")
+    User findByUserId(Long userId);
+
+
 
 }

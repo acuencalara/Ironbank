@@ -1,16 +1,15 @@
 package com.example.ironbank.service;
 
 import com.example.ironbank.DTO.AccountHolderDto;
-import com.example.ironbank.model.AccountHolder;
-import com.example.ironbank.model.Address;
-import com.example.ironbank.model.AdminUser;
-import com.example.ironbank.model.ThirdPartyUser;
+import com.example.ironbank.model.*;
 import com.example.ironbank.repository.AccountHolderRepository;
 import com.example.ironbank.repository.AdminUserRepository;
 import com.example.ironbank.repository.ThirdPartyUserRepository;
 import com.example.ironbank.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -24,7 +23,12 @@ public class UserService {
 
     private final AdminUserRepository adminUserRepository;
 
+    public User findByUserId(Long userId){
+        return userRepository.findByUserId(userId);
+    }
 
+    public Optional<AccountHolder> findAccountHolderByUserId(Long userId){
+        return accountHolderRepository.findByUserId(userId);}
     public AccountHolder postAccountHolder(AccountHolderDto accountHolderDto) {
 
         AccountHolder accountHolder = new AccountHolder();

@@ -22,6 +22,7 @@ public abstract class BasicAccount {
     @Column(name = "id", nullable = false)
     protected Long id;
 
+
     protected LocalDate creationDate;
 
     @OneToMany(mappedBy = "sendAccount", orphanRemoval = true)

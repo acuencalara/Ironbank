@@ -15,6 +15,8 @@ public class StudentCheckingAccount extends Account {
         super(creationDate, secretKey, statusEnum);
     }
 
+
+
     public StudentCheckingAccount() {
 
     }
