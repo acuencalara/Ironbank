@@ -20,6 +20,11 @@ public class ThirdPartyUser extends User{
         this.hashKey = hashKey;
     }
 
+    public ThirdPartyUser(String name, String username, String password, String hashKey) {
+        super(name, username, password);
+        this.hashKey = hashKey;
+    }
+
     public ThirdPartyUser() {
 
     }

@@ -6,11 +6,16 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User,Long> {
-    @Query("select u from User u where u.userId = ?1")
-    User findByUserId(Long userId);
+    @Query("select u from User u where u.id = ?1")
+    User findByUserId(Long id);
+
+    Optional<User> findByUsername(String username);
+
+    Boolean existsByUsername(String username);
 
 
 

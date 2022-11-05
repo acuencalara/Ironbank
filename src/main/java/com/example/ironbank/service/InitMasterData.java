@@ -18,13 +18,18 @@ public class InitMasterData {
     private final AddressRepository addressRepository;
 
     private final UserRepository userRepository;
+
+    private final ThirdPartyUserRepository thirdPartyUserRepository;
+
+    private RoleRepository roleRepository;
     private final StudentCheckingAccountRepository studentCheckingAccountRepository;
 
     public void initData(){
 
+        studentCheckingAccountRepository.deleteAll();
         accountHolderRepository.deleteAll();
         addressRepository.deleteAll();
-        studentCheckingAccountRepository.deleteAll();
+
 
 
         Address addressUser1 = new Address("Plza España",2,2, "25842", "Barcelona", "Spain");

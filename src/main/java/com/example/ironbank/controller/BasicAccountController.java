@@ -6,6 +6,7 @@ import com.example.ironbank.service.BasicAccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class BasicAccountController {
 
     @PostMapping("/studentcheckingaccount/")
     @ResponseStatus(HttpStatus.CREATED)
+    @PreAuthorize("hasRole('ADMIN')")
     public StudentCheckingAccount postStudentCheckingAccount(@RequestBody StudentCheckingAccountDto studentCheckingAccountDto){
         return basicAccountService.postStudentCheckingAccount(studentCheckingAccountDto);
     }

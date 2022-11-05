@@ -17,8 +17,8 @@ public interface AccountHolderRepository extends JpaRepository<AccountHolder,Lon
     @Override
     List<AccountHolder> findAll();
 
-    @Query("select a from AccountHolder a where a.userId = ?1")
-    Optional<AccountHolder> findByUserId(Long userId);
+    @Query("select a from AccountHolder a where a.id = ?1")
+    Optional<AccountHolder> findByUserId(Long id);
 
 
 }
